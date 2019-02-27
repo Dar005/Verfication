@@ -820,4 +820,291 @@ public class GahanDarranTestTask2 {
 
         Rate rate = new Rate(CarParkKind.STAFF, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
     }
+
+/////////////////////////////////////////////
+    //1
+    @org.junit.Test
+    public void visitorCostOverEight(){
+
+        ArrayList<Period> normalPeriods = new ArrayList<Period>();
+        ArrayList<Period> reducedPeriods = new ArrayList<Period>();
+
+        reducedPeriods.add(new Period(12, 14));
+        reducedPeriods.add(new Period(17, 22));
+
+        normalPeriods.add(new Period(9, 12));
+        normalPeriods.add(new Period(14, 17));
+
+        BigDecimal hourlyNormalRate = new BigDecimal( 5.00);
+        BigDecimal hourlyReducedRate = new BigDecimal( 3.00);
+
+        Rate rate = new Rate(CarParkKind.STAFF, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
+
+        assertEquals(rate.calculate(new Period(13, 17)), new BigDecimal(5.00));
+
+    }
+    //2
+    @org.junit.Test
+    public void visitorCostAboveEight(){
+
+        ArrayList<Period> normalPeriods = new ArrayList<Period>();
+        ArrayList<Period> reducedPeriods = new ArrayList<Period>();
+
+        reducedPeriods.add(new Period(12, 14));
+        reducedPeriods.add(new Period(17, 22));
+
+        normalPeriods.add(new Period(9, 12));
+        normalPeriods.add(new Period(14, 17));
+
+        BigDecimal hourlyNormalRate = new BigDecimal( 5.00);
+        BigDecimal hourlyReducedRate = new BigDecimal( 3.00);
+
+        Rate rate = new Rate(CarParkKind.STAFF, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
+
+        assertEquals(rate.calculate(new Period(17, 22)), new BigDecimal(5.00));
+
+    }
+    //3
+    @org.junit.Test
+    public void visitorCostEqualsThree(){
+
+        ArrayList<Period> normalPeriods = new ArrayList<Period>();
+        ArrayList<Period> reducedPeriods = new ArrayList<Period>();
+
+        reducedPeriods.add(new Period(12, 14));
+        reducedPeriods.add(new Period(17, 22));
+
+        normalPeriods.add(new Period(9, 12));
+        normalPeriods.add(new Period(14, 17));
+
+        BigDecimal hourlyNormalRate = new BigDecimal( 5.00);
+        BigDecimal hourlyReducedRate = new BigDecimal( 3.00);
+
+        Rate rate = new Rate(CarParkKind.STAFF, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
+
+        assertEquals(rate.calculate(new Period(13, 14)), new BigDecimal(0.00));
+
+    }
+    //4
+    @org.junit.Test
+    public void visitorCostEqualsEight(){
+
+        ArrayList<Period> normalPeriods = new ArrayList<Period>();
+        ArrayList<Period> reducedPeriods = new ArrayList<Period>();
+
+        reducedPeriods.add(new Period(12, 14));
+        reducedPeriods.add(new Period(17, 22));
+
+        normalPeriods.add(new Period(9, 12));
+        normalPeriods.add(new Period(14, 17));
+
+        BigDecimal hourlyNormalRate = new BigDecimal( 5.00);
+        BigDecimal hourlyReducedRate = new BigDecimal( 3.00);
+
+        Rate rate = new Rate(CarParkKind.STAFF, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
+
+        assertEquals(rate.calculate(new Period(13, 14)), new BigDecimal(0.00));
+    }
+    //5
+    @org.junit.Test
+    public void visitorCostJustOverEight(){
+
+        ArrayList<Period> normalPeriods = new ArrayList<Period>();
+        ArrayList<Period> reducedPeriods = new ArrayList<Period>();
+
+        reducedPeriods.add(new Period(12, 14));
+        reducedPeriods.add(new Period(17, 22));
+
+        normalPeriods.add(new Period(9, 12));
+        normalPeriods.add(new Period(14, 17));
+
+        BigDecimal hourlyNormalRate = new BigDecimal( 5.00);
+        BigDecimal hourlyReducedRate = new BigDecimal( 4.00);
+
+        Rate rate = new Rate(CarParkKind.STAFF, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
+
+        assertEquals(rate.calculate(new Period(13, 15)), new BigDecimal(1.00));
+    }
+    //6
+    @org.junit.Test
+    public void managerCostOverThree(){
+
+        ArrayList<Period> normalPeriods = new ArrayList<Period>();
+        ArrayList<Period> reducedPeriods = new ArrayList<Period>();
+
+        reducedPeriods.add(new Period(12, 14));
+        reducedPeriods.add(new Period(17, 22));
+
+        normalPeriods.add(new Period(9, 12));
+        normalPeriods.add(new Period(14, 17));
+
+        BigDecimal hourlyNormalRate = new BigDecimal( 5.00);
+        BigDecimal hourlyReducedRate = new BigDecimal( 3.00);
+
+        Rate rate = new Rate(CarParkKind.STAFF, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
+
+        assertEquals(rate.calculate(new Period(13, 15)), new BigDecimal(8.00));
+    }
+    //7
+    @org.junit.Test
+    public void managerCostWayOverThree(){
+
+        ArrayList<Period> normalPeriods = new ArrayList<Period>();
+        ArrayList<Period> reducedPeriods = new ArrayList<Period>();
+
+        reducedPeriods.add(new Period(12, 14));
+        reducedPeriods.add(new Period(17, 22));
+
+        normalPeriods.add(new Period(9, 12));
+        normalPeriods.add(new Period(14, 17));
+
+        BigDecimal hourlyNormalRate = new BigDecimal( 5.00);
+        BigDecimal hourlyReducedRate = new BigDecimal( 3.00);
+
+        Rate rate = new Rate(CarParkKind.STAFF, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
+
+        assertEquals(rate.calculate(new Period(13, 15)), new BigDecimal(31.00));
+    }
+    //8
+    @org.junit.Test
+    public void managerCostUnderThree(){
+
+        ArrayList<Period> normalPeriods = new ArrayList<Period>();
+        ArrayList<Period> reducedPeriods = new ArrayList<Period>();
+
+        reducedPeriods.add(new Period(12, 14));
+        reducedPeriods.add(new Period(17, 22));
+
+        normalPeriods.add(new Period(9, 12));
+        normalPeriods.add(new Period(14, 17));
+
+        BigDecimal hourlyNormalRate = new BigDecimal( 5.00);
+        BigDecimal hourlyReducedRate = new BigDecimal( 3.00);
+
+        Rate rate = new Rate(CarParkKind.STAFF, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
+
+        assertEquals(rate.calculate(new Period(12, 20)), new BigDecimal(17.30));
+    }
+    //9
+    @org.junit.Test
+    public void StudentCostFiveHours(){
+
+        ArrayList<Period> normalPeriods = new ArrayList<Period>();
+        ArrayList<Period> reducedPeriods = new ArrayList<Period>();
+
+        reducedPeriods.add(new Period(12, 14));
+        reducedPeriods.add(new Period(17, 22));
+
+        normalPeriods.add(new Period(9, 12));
+        normalPeriods.add(new Period(14, 17));
+
+        BigDecimal hourlyNormalRate = new BigDecimal( 5.00);
+        BigDecimal hourlyReducedRate = new BigDecimal( 3.00);
+
+        Rate rate = new Rate(CarParkKind.STAFF, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
+
+        assertEquals(rate.calculate(new Period(14, 19)), new BigDecimal(17.30));
+    }
+
+    //10
+    @org.junit.Test
+    public void StudentCostTwoHours(){
+
+        ArrayList<Period> normalPeriods = new ArrayList<Period>();
+        ArrayList<Period> reducedPeriods = new ArrayList<Period>();
+
+        reducedPeriods.add(new Period(12, 14));
+        reducedPeriods.add(new Period(17, 22));
+
+        normalPeriods.add(new Period(9, 12));
+        normalPeriods.add(new Period(14, 17));
+
+        BigDecimal hourlyNormalRate = new BigDecimal( 5.00);
+        BigDecimal hourlyReducedRate = new BigDecimal( 3.00);
+
+        Rate rate = new Rate(CarParkKind.STAFF, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
+
+        assertEquals(rate.calculate(new Period(13, 15)), new BigDecimal(6.12));
+    }
+    //11
+    @org.junit.Test
+    public void StudentCostOneHour(){
+
+        ArrayList<Period> normalPeriods = new ArrayList<Period>();
+        ArrayList<Period> reducedPeriods = new ArrayList<Period>();
+
+        reducedPeriods.add(new Period(12, 14));
+        reducedPeriods.add(new Period(17, 22));
+
+        normalPeriods.add(new Period(9, 12));
+        normalPeriods.add(new Period(14, 17));
+
+        BigDecimal hourlyNormalRate = new BigDecimal( 5.00);
+        BigDecimal hourlyReducedRate = new BigDecimal( 3.00);
+
+        Rate rate = new Rate(CarParkKind.STAFF, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
+
+        assertEquals(rate.calculate(new Period(14, 15)), new BigDecimal(5.00));
+    }
+    // 12
+    @org.junit.Test
+    public void StaffCostOneHour(){
+
+        ArrayList<Period> normalPeriods = new ArrayList<Period>();
+        ArrayList<Period> reducedPeriods = new ArrayList<Period>();
+
+        reducedPeriods.add(new Period(12, 14));
+        reducedPeriods.add(new Period(17, 22));
+
+        normalPeriods.add(new Period(9, 12));
+        normalPeriods.add(new Period(14, 17));
+
+        BigDecimal hourlyNormalRate = new BigDecimal( 5.00);
+        BigDecimal hourlyReducedRate = new BigDecimal( 3.00);
+
+        Rate rate = new Rate(CarParkKind.STAFF, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
+
+        assertEquals(rate.calculate(new Period(12, 13)), new BigDecimal(3.00));
+    }
+    //13
+    @org.junit.Test
+    public void StaffCostAboveSixteen(){
+
+        ArrayList<Period> normalPeriods = new ArrayList<Period>();
+        ArrayList<Period> reducedPeriods = new ArrayList<Period>();
+
+        reducedPeriods.add(new Period(12, 14));
+        reducedPeriods.add(new Period(17, 22));
+
+        normalPeriods.add(new Period(9, 12));
+        normalPeriods.add(new Period(14, 17));
+
+        BigDecimal hourlyNormalRate = new BigDecimal( 5.00);
+        BigDecimal hourlyReducedRate = new BigDecimal( 3.00);
+
+        Rate rate = new Rate(CarParkKind.STAFF, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
+
+        assertEquals(rate.calculate(new Period(12, 18)), new BigDecimal(16.00));
+    }
+
+    //14
+    @org.junit.Test
+    public void StaffCostBelowSixteen(){
+
+        ArrayList<Period> normalPeriods = new ArrayList<Period>();
+        ArrayList<Period> reducedPeriods = new ArrayList<Period>();
+
+        reducedPeriods.add(new Period(12, 14));
+        reducedPeriods.add(new Period(17, 22));
+
+        normalPeriods.add(new Period(9, 12));
+        normalPeriods.add(new Period(14, 17));
+
+        BigDecimal hourlyNormalRate = new BigDecimal( 5.00);
+        BigDecimal hourlyReducedRate = new BigDecimal( 3.00);
+
+        Rate rate = new Rate(CarParkKind.STAFF, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
+
+        assertEquals(rate.calculate(new Period(12, 15)), new BigDecimal(11.00));
+    }
 }

@@ -1,6 +1,7 @@
 package cm;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +12,11 @@ public class Rate {
     private CarParkKind kind;
     private BigDecimal hourlyNormalRate;
     private BigDecimal hourlyReducedRate;
+    private BigDecimal cutOff;
+    private BigDecimal min;
+    private BigDecimal cost;
+    private BigDecimal reduction;
+    private BigDecimal reduceAmount;
     private ArrayList<Period> reduced = new ArrayList<>();
     private ArrayList<Period> normal = new ArrayList<>();
 
@@ -91,11 +97,57 @@ public class Rate {
         }
         return isValid;
     }
+
     public BigDecimal calculate(Period periodStay) {
+        BigDecimal total;
         int normalRateHours = periodStay.occurences(normal);
         int reducedRateHours = periodStay.occurences(reduced);
-        return (this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours))).add(
+        total = (this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours))).add(
                 this.hourlyReducedRate.multiply(BigDecimal.valueOf(reducedRateHours)));
-    }
 
+        if (kind == CarParkKind.STAFF){
+            cutOff = new BigDecimal(16.00);
+            if (total.compareTo(cutOff) < 0){
+                return total;
+            }else{
+                return cutOff;
+            }
+        }
+        else if (kind == CarParkKind.MANAGEMENT){
+            min = new BigDecimal(3.00);
+            if (total.compareTo(min) < 0){
+                return min;
+            }else{
+                return total;
+            }
+        }
+        else if(kind == CarParkKind.STUDENT){
+            BigDecimal amountBeforeReduction = new BigDecimal(5.50);
+            if (total.compareTo(amountBeforeReduction) > 0){
+                cost = total;
+                cost = (cost.subtract(amountBeforeReduction));
+
+                reduction = cost.divide(new BigDecimal(4));
+                cost = cost.subtract(reduction);
+                total = cost.add(amountBeforeReduction);
+                total = total.setScale(2, RoundingMode.FLOOR);
+                return total;
+            }else{
+                return total;
+            }
+        }
+        else{
+            cutOff = new BigDecimal(8.00);
+            reduceAmount = new BigDecimal(2.00);
+            if (total.compareTo(cutOff)< 0){
+                BigDecimal free = new BigDecimal(0.00);
+                return free;
+            }else{
+                cost = total.subtract(cutOff);
+                total = cost.divide(reduceAmount);
+                return total;
+            }
+        }
+    }
 }
+

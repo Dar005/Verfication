@@ -1,6 +1,7 @@
 package cm;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
@@ -21,10 +22,6 @@ public class GahanDarranTestTask2 {
         normalPeriods.add(new Period(4, 9));
         normalPeriods.add(new Period(13, 11));
 
-        BigDecimal hourlyNormalRate = new BigDecimal( 3);
-        BigDecimal hourlyReducedRate = new BigDecimal( 5);
-
-        Rate rate = new Rate(CarParkKind.STAFF, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
     }
 
     @org.junit.Test(expected = IllegalArgumentException.class)
@@ -142,15 +139,6 @@ public class GahanDarranTestTask2 {
         ArrayList<Period> reducedPeriods = new ArrayList<Period>();
 
         reducedPeriods.add(new Period(-1, 3));
-        reducedPeriods.add(new Period(10, 12));
-
-        normalPeriods.add(new Period(4, 9));
-        normalPeriods.add(new Period(13, 16));
-
-        BigDecimal hourlyNormalRate = new BigDecimal( 5);
-        BigDecimal hourlyReducedRate = new BigDecimal( 3);
-
-        Rate rate = new Rate(CarParkKind.STAFF, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
     }
 
     @org.junit.Test(expected = IllegalArgumentException.class)
@@ -160,15 +148,6 @@ public class GahanDarranTestTask2 {
         ArrayList<Period> reducedPeriods = new ArrayList<Period>();
 
         reducedPeriods.add(new Period(-42, 3));
-        reducedPeriods.add(new Period(10, 12));
-
-        normalPeriods.add(new Period(4, 9));
-        normalPeriods.add(new Period(13, 16));
-
-        BigDecimal hourlyNormalRate = new BigDecimal(5);
-        BigDecimal hourlyReducedRate = new BigDecimal(3);
-
-        Rate rate = new Rate(CarParkKind.STAFF, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
     }
 
     @org.junit.Test(expected= IllegalArgumentException.class)
@@ -179,14 +158,6 @@ public class GahanDarranTestTask2 {
 
         reducedPeriods.add(new Period(4, 8));
         reducedPeriods.add(new Period(21, 25));
-
-        normalPeriods.add(new Period(1, 3));
-        normalPeriods.add(new Period(13, 16));
-
-        BigDecimal hourlyNormalRate = new BigDecimal( 5);
-        BigDecimal hourlyReducedRate = new BigDecimal( 3);
-
-        Rate rate = new Rate(CarParkKind.STUDENT, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
 
     }
 
@@ -199,13 +170,6 @@ public class GahanDarranTestTask2 {
         reducedPeriods.add(new Period(8, 11));
         reducedPeriods.add(new Period(20, 42));
 
-        normalPeriods.add(new Period(1, 4));
-        normalPeriods.add(new Period(12, 14));
-
-        BigDecimal hourlyNormalRate = new BigDecimal( 5);
-        BigDecimal hourlyReducedRate = new BigDecimal( 3);
-
-        Rate rate = new Rate(CarParkKind.MANAGEMENT, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
     }
 
     @org.junit.Test(expected = IllegalArgumentException.class)
@@ -217,13 +181,6 @@ public class GahanDarranTestTask2 {
         reducedPeriods.add(new Period(6, 9));
         reducedPeriods.add(new Period(14, 12));
 
-        normalPeriods.add(new Period(1, 4));
-        normalPeriods.add(new Period(18, 22));
-
-        BigDecimal hourlyNormalRate = new BigDecimal( 5);
-        BigDecimal hourlyReducedRate = new BigDecimal( 3);
-
-        Rate rate = new Rate(CarParkKind.MANAGEMENT, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
     }
 
     @org.junit.Test(expected = IllegalArgumentException.class)
@@ -238,10 +195,6 @@ public class GahanDarranTestTask2 {
         normalPeriods.add(new Period(1, 4));
         normalPeriods.add(new Period(22, 25));
 
-        BigDecimal hourlyNormalRate = new BigDecimal( 5);
-        BigDecimal hourlyReducedRate = new BigDecimal( 3);
-
-        Rate rate = new Rate(CarParkKind.MANAGEMENT, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
     }
 
     @org.junit.Test(expected = IllegalArgumentException.class)
@@ -256,10 +209,6 @@ public class GahanDarranTestTask2 {
         normalPeriods.add(new Period(1, 4));
         normalPeriods.add(new Period(21, 42));
 
-        BigDecimal hourlyNormalRate = new BigDecimal( 5);
-        BigDecimal hourlyReducedRate = new BigDecimal( 3);
-
-        Rate rate = new Rate(CarParkKind.VISITOR, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
     }
 
     @org.junit.Test(expected = IllegalArgumentException.class)
@@ -272,12 +221,7 @@ public class GahanDarranTestTask2 {
         reducedPeriods.add(new Period(10, 12));
 
         normalPeriods.add(new Period(-1, 4));
-        normalPeriods.add(new Period(19, 22));
 
-        BigDecimal hourlyNormalRate = new BigDecimal( 5);
-        BigDecimal hourlyReducedRate = new BigDecimal( 3);
-
-        Rate rate = new Rate(CarParkKind.STUDENT, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
     }
 
     @org.junit.Test(expected = IllegalArgumentException.class)
@@ -290,12 +234,7 @@ public class GahanDarranTestTask2 {
         reducedPeriods.add(new Period(10, 12));
 
         normalPeriods.add(new Period(-42, 4));
-        normalPeriods.add(new Period(19, 22));
 
-        BigDecimal hourlyNormalRate = new BigDecimal( 5);
-        BigDecimal hourlyReducedRate = new BigDecimal( 3);
-
-        Rate rate = new Rate(CarParkKind.STUDENT, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
     }
 
     @org.junit.Test(expected = IllegalArgumentException.class)
@@ -310,10 +249,6 @@ public class GahanDarranTestTask2 {
         normalPeriods.add(new Period(1, 4));
         normalPeriods.add(new Period(21, 17));
 
-        BigDecimal hourlyNormalRate = new BigDecimal( 5);
-        BigDecimal hourlyReducedRate = new BigDecimal( 3);
-
-        Rate rate = new Rate(CarParkKind.STUDENT, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
     }
 
     @org.junit.Test(expected = IllegalArgumentException.class)
@@ -821,8 +756,6 @@ public class GahanDarranTestTask2 {
         Rate rate = new Rate(CarParkKind.STAFF, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
     }
 
-/////////////////////////////////////////////
-    //1
     @org.junit.Test
     public void visitorCostOverEight(){
 
@@ -838,12 +771,12 @@ public class GahanDarranTestTask2 {
         BigDecimal hourlyNormalRate = new BigDecimal( 5.00);
         BigDecimal hourlyReducedRate = new BigDecimal( 3.00);
 
-        Rate rate = new Rate(CarParkKind.STAFF, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
+        Rate rate = new Rate(CarParkKind.VISITOR, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
 
         assertEquals(rate.calculate(new Period(13, 17)), new BigDecimal(5.00));
 
     }
-    //2
+
     @org.junit.Test
     public void visitorCostAboveEight(){
 
@@ -859,12 +792,12 @@ public class GahanDarranTestTask2 {
         BigDecimal hourlyNormalRate = new BigDecimal( 5.00);
         BigDecimal hourlyReducedRate = new BigDecimal( 3.00);
 
-        Rate rate = new Rate(CarParkKind.STAFF, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
+        Rate rate = new Rate(CarParkKind.VISITOR, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
 
-        assertEquals(rate.calculate(new Period(17, 22)), new BigDecimal(5.00));
+        assertEquals(rate.calculate(new Period(17, 22)), new BigDecimal(3.50));
 
     }
-    //3
+
     @org.junit.Test
     public void visitorCostEqualsThree(){
 
@@ -880,12 +813,12 @@ public class GahanDarranTestTask2 {
         BigDecimal hourlyNormalRate = new BigDecimal( 5.00);
         BigDecimal hourlyReducedRate = new BigDecimal( 3.00);
 
-        Rate rate = new Rate(CarParkKind.STAFF, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
+        Rate rate = new Rate(CarParkKind.VISITOR, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
 
         assertEquals(rate.calculate(new Period(13, 14)), new BigDecimal(0.00));
 
     }
-    //4
+
     @org.junit.Test
     public void visitorCostEqualsEight(){
 
@@ -901,11 +834,11 @@ public class GahanDarranTestTask2 {
         BigDecimal hourlyNormalRate = new BigDecimal( 5.00);
         BigDecimal hourlyReducedRate = new BigDecimal( 3.00);
 
-        Rate rate = new Rate(CarParkKind.STAFF, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
+        Rate rate = new Rate(CarParkKind.VISITOR, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
 
         assertEquals(rate.calculate(new Period(13, 14)), new BigDecimal(0.00));
     }
-    //5
+
     @org.junit.Test
     public void visitorCostJustOverEight(){
 
@@ -921,11 +854,11 @@ public class GahanDarranTestTask2 {
         BigDecimal hourlyNormalRate = new BigDecimal( 5.00);
         BigDecimal hourlyReducedRate = new BigDecimal( 4.00);
 
-        Rate rate = new Rate(CarParkKind.STAFF, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
+        Rate rate = new Rate(CarParkKind.VISITOR, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
 
-        assertEquals(rate.calculate(new Period(13, 15)), new BigDecimal(1.00));
+        assertEquals(rate.calculate(new Period(13, 15)), new BigDecimal(0.50));
     }
-    //6
+
     @org.junit.Test
     public void managerCostOverThree(){
 
@@ -941,11 +874,11 @@ public class GahanDarranTestTask2 {
         BigDecimal hourlyNormalRate = new BigDecimal( 5.00);
         BigDecimal hourlyReducedRate = new BigDecimal( 3.00);
 
-        Rate rate = new Rate(CarParkKind.STAFF, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
+        Rate rate = new Rate(CarParkKind.MANAGEMENT, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
 
         assertEquals(rate.calculate(new Period(13, 15)), new BigDecimal(8.00));
     }
-    //7
+
     @org.junit.Test
     public void managerCostWayOverThree(){
 
@@ -961,11 +894,11 @@ public class GahanDarranTestTask2 {
         BigDecimal hourlyNormalRate = new BigDecimal( 5.00);
         BigDecimal hourlyReducedRate = new BigDecimal( 3.00);
 
-        Rate rate = new Rate(CarParkKind.STAFF, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
+        Rate rate = new Rate(CarParkKind.MANAGEMENT, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
 
-        assertEquals(rate.calculate(new Period(13, 15)), new BigDecimal(31.00));
+        assertEquals(rate.calculate(new Period(13, 18)), new BigDecimal(21.00));
     }
-    //8
+
     @org.junit.Test
     public void managerCostUnderThree(){
 
@@ -979,13 +912,13 @@ public class GahanDarranTestTask2 {
         normalPeriods.add(new Period(14, 17));
 
         BigDecimal hourlyNormalRate = new BigDecimal( 5.00);
-        BigDecimal hourlyReducedRate = new BigDecimal( 3.00);
+        BigDecimal hourlyReducedRate = new BigDecimal( 2.00);
 
-        Rate rate = new Rate(CarParkKind.STAFF, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
+        Rate rate = new Rate(CarParkKind.MANAGEMENT, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
 
-        assertEquals(rate.calculate(new Period(12, 20)), new BigDecimal(17.30));
+        assertEquals(rate.calculate(new Period(12, 13)), new BigDecimal(3.00));
     }
-    //9
+
     @org.junit.Test
     public void StudentCostFiveHours(){
 
@@ -1001,12 +934,11 @@ public class GahanDarranTestTask2 {
         BigDecimal hourlyNormalRate = new BigDecimal( 5.00);
         BigDecimal hourlyReducedRate = new BigDecimal( 3.00);
 
-        Rate rate = new Rate(CarParkKind.STAFF, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
+        Rate rate = new Rate(CarParkKind.STUDENT, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
 
-        assertEquals(rate.calculate(new Period(14, 19)), new BigDecimal(17.30));
+        assertEquals(rate.calculate(new Period(14, 19)), new BigDecimal(17.12).setScale(2, RoundingMode.FLOOR));
     }
 
-    //10
     @org.junit.Test
     public void StudentCostTwoHours(){
 
@@ -1022,11 +954,11 @@ public class GahanDarranTestTask2 {
         BigDecimal hourlyNormalRate = new BigDecimal( 5.00);
         BigDecimal hourlyReducedRate = new BigDecimal( 3.00);
 
-        Rate rate = new Rate(CarParkKind.STAFF, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
+        Rate rate = new Rate(CarParkKind.STUDENT, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
 
-        assertEquals(rate.calculate(new Period(13, 15)), new BigDecimal(6.12));
+        assertEquals(rate.calculate(new Period(13, 15)), new BigDecimal(7.37).setScale(2, RoundingMode.FLOOR));
     }
-    //11
+
     @org.junit.Test
     public void StudentCostOneHour(){
 
@@ -1042,11 +974,11 @@ public class GahanDarranTestTask2 {
         BigDecimal hourlyNormalRate = new BigDecimal( 5.00);
         BigDecimal hourlyReducedRate = new BigDecimal( 3.00);
 
-        Rate rate = new Rate(CarParkKind.STAFF, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
+        Rate rate = new Rate(CarParkKind.STUDENT, hourlyNormalRate, hourlyReducedRate, reducedPeriods, normalPeriods);
 
         assertEquals(rate.calculate(new Period(14, 15)), new BigDecimal(5.00));
     }
-    // 12
+
     @org.junit.Test
     public void StaffCostOneHour(){
 
@@ -1066,7 +998,7 @@ public class GahanDarranTestTask2 {
 
         assertEquals(rate.calculate(new Period(12, 13)), new BigDecimal(3.00));
     }
-    //13
+
     @org.junit.Test
     public void StaffCostAboveSixteen(){
 
@@ -1087,7 +1019,6 @@ public class GahanDarranTestTask2 {
         assertEquals(rate.calculate(new Period(12, 18)), new BigDecimal(16.00));
     }
 
-    //14
     @org.junit.Test
     public void StaffCostBelowSixteen(){
 
